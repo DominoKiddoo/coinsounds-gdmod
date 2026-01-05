@@ -1,0 +1,56 @@
+{
+	"geode": "4.10.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "dominodev.coin-sounds",
+	"name": "Coin Sounds",
+	"version": "v1.0.0",
+	"developer": "dominodev",
+	"description": "Plays a sound when you collect a coin.",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0"
+	},
+
+	"settings": {
+		"custom-sounds": {
+		"type": "bool",
+		"name": "Enable Custom Sounds",
+		"description": "Enable custom sounds for the coins!",
+		"default": false
+		},
+
+		"inbuilt-sound": {
+			"type": "string",
+			"name": "Inbuilt sound (READ DESCRIPTION)",
+			"default": "",
+			"description": "Use a sound <cy>already in the game files</c> for the coin sound. Keep **blank** if you are not using it. <cr>PLEASE</c> only use this if you know what you're doing because inputting a file that does not exist may <cr>crash the game</c>.",
+			"enable-if": "custom-sounds",
+			"filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789"
+		},
+		"uploaded-sound": {
+			"type": "file",
+			"name": "Custom Sound",
+			"enable-if": "custom-sounds",
+			"default": {
+				"win": "",
+				"mac": "",
+				"android": ""
+			},
+			"control": {
+				"dialog": "open",
+				"filters": [
+					{
+						"files": ["*.mp3", "*.ogg", "*.wav"],
+						"description": "Audio files"
+					}
+				]
+			}
+		}
+	},
+
+	"tags": ["customization", "enhancement", "offline"]
+}
