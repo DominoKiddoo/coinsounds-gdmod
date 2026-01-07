@@ -8,7 +8,7 @@
 	},
 	"id": "dominodev.coin-sounds",
 	"name": "Coin Sounds",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "dominodev",
 	"description": "Plays a sound when you collect a coin.",
 	"dependencies": {

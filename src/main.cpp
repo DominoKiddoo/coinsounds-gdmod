@@ -19,16 +19,13 @@ class $modify(CoinSoundsHook, EffectGameObject) {
 
             if (usingCustomSounds){
                 if (inbuiltSound != "") {
-                    log::info("inbuilt sound");
                     FMODAudioEngine::get()->playEffect(inbuiltSound);
                 } else {
-                    FMODAudioEngine::get()->playEffect(uploadedSound.string().c_str());
-                    log::info("uploaded sound");
-                }
+                    std::string soundPath = geode::utils::string::pathToString(uploadedSound);
+                    FMODAudioEngine::get()->playEffect(soundPath.c_str());
+                }  
             } else {
                 FMODAudioEngine::get()->playEffect("gold01.ogg");
-                log::info("normal sound");
-
             }
 
         }
