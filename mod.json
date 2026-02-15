@@ -1,19 +1,21 @@
 {
-	"geode": "4.10.0",
+	"geode": "5.0.0-beta.1",
 	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"id": "dominodev.coin-sounds",
 	"name": "Coin Sounds",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "dominodev",
 	"description": "Plays a sound when you collect a coin.",
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0"
 	},
+
+
 
 	"settings": {
 		"custom-sounds": {
@@ -29,7 +31,7 @@
 			"default": "",
 			"description": "Use a sound <cy>already in the game files</c> for the coin sound. Keep **blank** if you are not using it. <cr>PLEASE</c> only use this if you know what you're doing because inputting a file that does not exist may <cr>crash the game</c>.",
 			"enable-if": "custom-sounds",
-			"filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789"
+			"filter": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789-_/"
 		},
 		"uploaded-sound": {
 			"type": "file",
@@ -49,6 +51,40 @@
 					}
 				]
 			}
+		},
+
+		"pitchjeader": {
+			"type": "title",
+			"name": "Pitch Settings"
+		},
+
+		"enable-random-pitch": {
+			"type": "bool",
+			"name": "Enable Random Pitch",
+			"description": "Enable random pitch for the coin sound",
+			"default": false
+		},
+
+		"min-pitch": {
+			"type": "float",
+			"name": "Minimum Pitch",
+			"description": "The minimum pitch for the coin sound",
+			"default": 1.0,
+			"min": 0.1,
+			"max": 3.0,
+			"step": 0.1,
+			"enable-if": "enable-random-pitch"
+		},
+
+			"max-pitch": {
+			"type": "float",
+			"name": "Maximum Pitch",
+			"description": "The maximum pitch for the coin sound",
+			"default": 1.0,
+			"min": 0.1,
+			"max": 3.0,
+			"step": 0.1,
+			"enable-if": "enable-random-pitch"
 		}
 	},
 

@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EffectGameObject.hpp>
+#include <random>
 
 using namespace geode::prelude;
 
@@ -19,13 +20,120 @@ class $modify(CoinSoundsHook, EffectGameObject) {
 
             if (usingCustomSounds){
                 if (inbuiltSound != "") {
-                    FMODAudioEngine::get()->playEffect(inbuiltSound);
+                    
+                bool enableRandomPitch = Mod::get()->getSettingValue<bool>("enable-random-pitch");
+                float randomPitch = 1.0f;
+
+                if (enableRandomPitch) {
+                    float minPitch = Mod::get()->getSettingValue<float>("min-pitch");
+                    float maxPitch = Mod::get()->getSettingValue<float>("max-pitch");
+                    
+                    static std::random_device rd;
+                    static std::mt19937 gen(rd());
+                    std::uniform_real_distribution<float> dis(minPitch, maxPitch);
+                    
+                    randomPitch = dis(gen);
+                }
+                    
+                    FMODAudioEngine::get()->playEffectAdvanced(
+                        inbuiltSound,
+                        1.0f,
+                        0.0f,
+                        1.0f,
+                        randomPitch,
+                        false,
+                        false,
+                        0,
+                        0,
+                        0,
+                        0,
+                        false,
+                        0,
+                        false,
+                        false,
+                        0,
+                        0,
+                        0.0f,
+                        0
+                    );
                 } else {
+                    float minPitch = Mod::get()->getSettingValue<float>("min-pitch");
+                    float maxPitch = Mod::get()->getSettingValue<float>("max-pitch");
                     std::string soundPath = geode::utils::string::pathToString(uploadedSound);
-                    FMODAudioEngine::get()->playEffect(soundPath.c_str());
+                    bool enableRandomPitch = Mod::get()->getSettingValue<bool>("enable-random-pitch");
+                    float randomPitch = 1.0f;
+                    
+                    if (enableRandomPitch) {
+                        float minPitch = Mod::get()->getSettingValue<float>("min-pitch");
+                        float maxPitch = Mod::get()->getSettingValue<float>("max-pitch");
+                        
+                        static std::random_device rd;
+                        static std::mt19937 gen(rd());
+                        std::uniform_real_distribution<float> dis(minPitch, maxPitch);
+                        
+                        randomPitch = dis(gen);
+                    }
+                    FMODAudioEngine::get()->playEffectAdvanced(
+                        soundPath.c_str(),
+                        1.0f,
+                        0.0f,
+                        1.0f,
+                        randomPitch,
+                        false,
+                        false,
+                        0,
+                        0,
+                        0,
+                        0,
+                        false,
+                        0,
+                        false,
+                        false,
+                        0,
+                        0,
+                        0.0f,
+                        0
+                    );
                 }  
             } else {
-                FMODAudioEngine::get()->playEffect("gold01.ogg");
+
+                bool enableRandomPitch = Mod::get()->getSettingValue<bool>("enable-random-pitch");
+                float randomPitch = 1.0f;
+
+                if (enableRandomPitch) {
+                    float minPitch = Mod::get()->getSettingValue<float>("min-pitch");
+                    float maxPitch = Mod::get()->getSettingValue<float>("max-pitch");
+                    
+                    static std::random_device rd;
+                    static std::mt19937 gen(rd());
+                    std::uniform_real_distribution<float> dis(minPitch, maxPitch);
+                    
+                    randomPitch = dis(gen);
+                }
+
+                FMODAudioEngine::get()->playEffectAdvanced(
+                    "gold01.ogg",
+                    1.0f,
+                    0.0f,
+                    1.0f,
+                    randomPitch,
+                    false,
+                    false,
+                    0,
+                    0,
+                    0,
+                    0,
+                    false,
+                    0,
+                    false,
+                    false,
+                    0,
+                    0,
+                    0.0f,
+                    0
+                );
+                return;
+        
             }
 
         }
