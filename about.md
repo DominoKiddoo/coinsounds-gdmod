@@ -1,3 +1,3 @@
-# Coin Sounds
+# EVIL Click Sounds
 
-Adds a <cb>sound</c> when you collect a <cy>coin!</cy> Can be changed in the <cg>settings</cg>.
+Adds a <cb>EVIL sound</c> when DONT collect a <cy>CLICK!</cy> Can NOT be changed in the <cg>EVIL settings</cg>.
