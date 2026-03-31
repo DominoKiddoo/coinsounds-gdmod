@@ -7,10 +7,10 @@
 		"ios": "2.2081"
 	},
 	"id": "dominodev.coin-sounds",
-	"name": "Coin Sounds",
+	"name": "EVIL Click Sounds",
 	"version": "v1.0.2",
 	"developer": "dominodev",
-	"description": "Plays a sound when you collect a coin.",
+	"description": "EVILY Plays a sound when you DONT CLICK.",
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0"
 	},
