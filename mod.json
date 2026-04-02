@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.0-beta.1",
+	"geode": "5.4.1",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081",
@@ -8,7 +8,7 @@
 	},
 	"id": "dominodev.coin-sounds",
 	"name": "Coin Sounds",
-	"version": "v1.0.2",
+	"version": "v1.0.4",
 	"developer": "dominodev",
 	"description": "Plays a sound when you collect a coin.",
 	"dependencies": {
