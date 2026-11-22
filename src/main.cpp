@@ -1,11 +1,13 @@
 #include <Geode/Geode.hpp>
+#include <Geode/loader/SettingV3.hpp>
+
 #include <Geode/modify/EffectGameObject.hpp>
 #include <random>
 
 using namespace geode::prelude;
 
 class $modify(CoinSoundsHook, EffectGameObject) {
-    void triggerObject(GJBaseGameLayer* layer, int coinID, gd::vector<int> const* targets) {
+    void triggerObject(GJBaseGameLayer* layer, int coinID, std::vector<int> const* targets) {
         
         bool isCoin = (this->m_objectType == GameObjectType::UserCoin || 
                        this->m_objectType == GameObjectType::SecretCoin);
@@ -16,7 +18,7 @@ class $modify(CoinSoundsHook, EffectGameObject) {
         if (isCoin && playLayer && !playLayer->m_isEditor) {
             auto usingCustomSounds = Mod::get()->getSettingValue<bool>("custom-sounds");
             auto inbuiltSound = Mod::get()->getSettingValue<std::string>("inbuilt-sound");
-            auto uploadedSound = Mod::get()->getSettingValue<std::filesystem::path>("uploaded-sound");
+            auto uploadedSound = Mod::get()->getSettingValue<asp::fs::Path>("uploaded-sound");
 
             if (usingCustomSounds){
                 if (inbuiltSound != "") {
@@ -59,7 +61,7 @@ class $modify(CoinSoundsHook, EffectGameObject) {
                 } else {
                     float minPitch = Mod::get()->getSettingValue<float>("min-pitch");
                     float maxPitch = Mod::get()->getSettingValue<float>("max-pitch");
-                    std::string soundPath = geode::utils::string::pathToString(uploadedSound);
+                    std::string soundPath = uploadedSound.string();
                     bool enableRandomPitch = Mod::get()->getSettingValue<bool>("enable-random-pitch");
                     float randomPitch = 1.0f;
                     
